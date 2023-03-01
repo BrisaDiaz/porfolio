@@ -9,13 +9,17 @@
         "lint": "next lint",
         "check-types": "tsc --pretty --noEmit",
         "check-format": "prettier --check .",
+        "css-format": "npx stylelint **/*.css --fix",
         "check-lint": "eslint . --ext ts --ext tsx --ext js",
         "format": "prettier --write .",
         "test": "jest --watch",
         "test:ci": "jest --ci",
         "test:related": "jest --bail --findRelatedTests",
+        "lgci": "lhci autorun --headful",
+        "lgci:run": "yarn run build &&  yarn run lgci",
         "test-all": "yarn run check-format && yarn run check-lint && yarn run check-types && yarn run build",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "postbuild": "next-sitemap --config next-sitemap.config.js"
     },
     "dependencies": {
         "@types/node": "18.14.2",
@@ -32,6 +36,7 @@
         "@commitlint/cli": "^17.4.4",
         "@commitlint/config-conventional": "^17.4.4",
         "@jest/globals": "^29.4.3",
+        "@next/bundle-analyzer": "^13.2.3",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
@@ -44,7 +49,10 @@
         "jest": "^29.4.3",
         "jest-environment-jsdom": "^29.4.3",
         "lint-staged": "^13.1.2",
-        "prettier": "^2.8.4"
+        "next-sitemap": "^3.1.55",
+        "prettier": "^2.8.4",
+        "stylelint": "^15.2.0",
+        "stylelint-config-standard": "^30.0.1"
     },
     "lint-staged": {
         "**/*.{js,jsx,ts,tsx}": [
@@ -56,5 +64,8 @@
     ],
     "**/*.(ts|tsx|js|md|json|css)": [
         "prettier --write ."
+    ],
+    "**/*.(css)": [
+        "stylelint --fix"
     ]
 }
