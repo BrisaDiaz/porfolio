@@ -1,22 +1,60 @@
 {
-  "name": "portfolio-web",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@types/node": "18.14.2",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "eslint": "8.35.0",
-    "eslint-config-next": "13.2.3",
-    "next": "13.2.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "4.9.5"
-  }
+    "name": "portfolio-web",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "check-types": "tsc --pretty --noEmit",
+        "check-format": "prettier --check .",
+        "check-lint": "eslint . --ext ts --ext tsx --ext js",
+        "format": "prettier --write .",
+        "test": "jest --watch",
+        "test:ci": "jest --ci",
+        "test:related": "jest --bail --findRelatedTests",
+        "test-all": "yarn run check-format && yarn run check-lint && yarn run check-types && yarn run build",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "@types/node": "18.14.2",
+        "@types/react": "^18.0.28",
+        "@types/react-dom": "18.0.11",
+        "eslint": "^8.35.0",
+        "eslint-config-next": "13.2.3",
+        "next": "13.2.3",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "typescript": "4.9.5"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.4.4",
+        "@commitlint/config-conventional": "^17.4.4",
+        "@jest/globals": "^29.4.3",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^14.0.0",
+        "@testing-library/user-event": "^14.4.3",
+        "@types/testing-library__jest-dom": "^5.14.5",
+        "@typescript-eslint/eslint-plugin": "^5.54.0",
+        "@typescript-eslint/parser": "^5.54.0",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-testing-library": "^5.10.2",
+        "husky": "^8.0.0",
+        "jest": "^29.4.3",
+        "jest-environment-jsdom": "^29.4.3",
+        "lint-staged": "^13.1.2",
+        "prettier": "^2.8.4"
+    },
+    "lint-staged": {
+        "**/*.{js,jsx,ts,tsx}": [
+            "eslint ."
+        ]
+    },
+    "**/*.(ts|tsx)": [
+        "yarn tsc --noEmit"
+    ],
+    "**/*.(ts|tsx|js|md|json|css)": [
+        "prettier --write ."
+    ]
 }
