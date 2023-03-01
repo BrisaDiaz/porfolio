@@ -7,6 +7,7 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
+        "lint:fix": "next lint --fix",
         "check-types": "tsc --pretty --noEmit",
         "check-format": "prettier --check .",
         "css-format": "npx stylelint **/*.css --fix",
@@ -17,7 +18,7 @@
         "test:related": "jest --bail --findRelatedTests",
         "lgci": "lhci autorun --headful",
         "lgci:run": "yarn run build &&  yarn run lgci",
-        "test-all": "yarn run check-format && yarn run check-lint && yarn run check-types && yarn run build",
+        "test-all": "yarn run check-format && yarn run lint:fix && yarn run check-types && yarn run build",
         "prepare": "husky install",
         "postbuild": "next-sitemap --config next-sitemap.config.js"
     },
