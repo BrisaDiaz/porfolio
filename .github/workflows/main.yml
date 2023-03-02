@@ -89,7 +89,7 @@ jobs:
           path: .next
       - name: Lighthouse CI
         run: |
-                  yarn add -g @lhci/cli@0.8.x
+                  yarn global add @lhci/cli@0.8.x
                   lhci autorun
         env:
                  LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
