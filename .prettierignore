@@ -5,3 +5,6 @@ yarn.lock
 package-lock.json
 public
 .lighthouseci
+.env
+*robots.txt
+sitemap*.xml
