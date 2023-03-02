@@ -99,6 +99,7 @@ jobs:
   deploy:
     needs: [lint, build]
     runs-on: ubuntu-18.04
+    environment: test
     steps:
       - uses: actions/checkout@v2
         with:
